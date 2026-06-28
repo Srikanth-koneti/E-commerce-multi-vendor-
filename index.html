@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MarketHub – Multi-Vendor E-Commerce</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header-top">
+      <div class="container">
+        <span><i class="fas fa-truck"></i> Free shipping on orders over ₹499</span>
+        <span><i class="fas fa-headset"></i> 24/7 Support</span>
+        <span><i class="fas fa-shield-alt"></i> Secure Payments</span>
+      </div>
+    </div>
+    <nav class="navbar">
+      <div class="container nav-inner">
+        <a href="#" class="logo">Market<span>Hub</span></a>
+        <div class="search-bar">
+          <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="electronics">Electronics</option>
+            <option value="fashion">Fashion</option>
+            <option value="home">Home & Kitchen</option>
+            <option value="books">Books</option>
+            <option value="sports">Sports</option>
+          </select>
+          <input type="text" id="searchInput" placeholder="Search products, brands, vendors…"/>
+          <button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="nav-actions">
+          <button class="icon-btn" id="wishlistBtn" title="Wishlist">
+            <i class="far fa-heart"></i>
+            <span class="badge" id="wishlistCount">0</span>
+          </button>
+          <button class="icon-btn" id="cartBtn" title="Cart">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="badge" id="cartCount">0</span>
+          </button>
+          <button class="icon-btn" id="accountBtn" title="Account">
+            <i class="far fa-user"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="category-nav">
+      <div class="container">
+        <a href="#" class="cat-link active" data-cat="all">All</a>
+        <a href="#" class="cat-link" data-cat="electronics">Electronics</a>
+        <a href="#" class="cat-link" data-cat="fashion">Fashion</a>
+        <a href="#" class="cat-link" data-cat="home">Home &amp; Kitchen</a>
+        <a href="#" class="cat-link" data-cat="books">Books</a>
+        <a href="#" class="cat-link" data-cat="sports">Sports</a>
+        <a href="#vendors" class="cat-link">Our Vendors</a>
+        <a href="#deals" class="cat-link">Today's Deals</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="hero" id="hero">
+    <div class="hero-slides">
+      <div class="hero-slide active">
+        <div class="container hero-content">
+          <p class="hero-eyebrow">Multi-Vendor Marketplace 2026</p>
+          <h1>Shop Smarter.<br>From Thousands<br>of Vendors.</h1>
+          <p class="hero-sub">Discover products across 50+ categories from verified sellers nationwide.</p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="scrollToProducts()">Shop Now</button>
+            <button class="btn-outline" onclick="document.getElementById('vendors').scrollIntoView({behavior:'smooth'})">Meet Vendors</button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="floating-card card1"><i class="fas fa-star"></i> 4.9 Rating</div>
+          <div class="floating-card card2"><i class="fas fa-store"></i> 500+ Vendors</div>
+          <div class="floating-card card3"><i class="fas fa-box"></i> 10K+ Products</div>
+          <div class="hero-graphic">
+            <div class="circle c1"></div>
+            <div class="circle c2"></div>
+            <div class="circle c3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stats-bar">
+      <div class="container stats-inner">
+        <div class="stat"><strong>50K+</strong><span>Happy Customers</span></div>
+        <div class="stat"><strong>500+</strong><span>Verified Vendors</span></div>
+        <div class="stat"><strong>10K+</strong><span>Products</span></div>
+        <div class="stat"><strong>4.8<i class="fas fa-star" style="font-size:0.7em;color:#f59e0b"></i></strong><span>Avg. Rating</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED CATEGORIES -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <h2>Browse Categories</h2>
+        <p>Find everything you need from our curated collections</p>
+      </div>
+      <div class="categories-grid">
+        <div class="cat-card" onclick="filterByCategory('electronics')">
+          <div class="cat-icon elec"><i class="fas fa-laptop"></i></div>
+          <span>Electronics</span><small>2,340 items</small>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('fashion')">
+          <div class="cat-icon fash"><i class="fas fa-tshirt"></i></div>
+          <span>Fashion</span><small>5,120 items</small>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('home')">
+          <div class="cat-icon home"><i class="fas fa-couch"></i></div>
+          <span>Home &amp; Kitchen</span><small>3,890 items</small>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('books')">
+          <div class="cat-icon book"><i class="fas fa-book"></i></div>
+          <span>Books</span><small>8,670 items</small>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('sports')">
+          <div class="cat-icon sprt"><i class="fas fa-dumbbell"></i></div>
+          <span>Sports</span><small>1,560 items</small>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('all')">
+          <div class="cat-icon all"><i class="fas fa-th"></i></div>
+          <span>View All</span><small>21,580 items</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TODAY'S DEALS -->
+  <section class="deals-banner" id="deals">
+    <div class="container">
+      <div class="deals-inner">
+        <div class="deals-text">
+          <span class="deal-badge">🔥 Today's Deal</span>
+          <h2>Flash Sale — Up to 70% Off!</h2>
+          <p>Limited time offers from top vendors. Grab before they're gone.</p>
+          <div class="countdown">
+            <div class="time-block"><span id="hours">05</span><small>Hours</small></div>
+            <div class="sep">:</div>
+            <div class="time-block"><span id="minutes">30</span><small>Mins</small></div>
+            <div class="sep">:</div>
+            <div class="time-block"><span id="seconds">00</span><small>Secs</small></div>
+          </div>
+        </div>
+        <div class="deals-tags">
+          <span>Smartphones</span><span>Headphones</span><span>Sneakers</span>
+          <span>Cookware</span><span>Novels</span><span>Yoga Mats</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS SECTION -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Products</h2>
+        <p>Handpicked from the best vendors on our platform</p>
+      </div>
+      <div class="filter-bar">
+        <div class="filter-left">
+          <label>Sort by:</label>
+          <select id="sortSelect">
+            <option value="default">Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+            <option value="newest">Newest First</option>
+          </select>
+          <label>Max Price: <span id="priceDisplay">₹5000</span></label>
+          <input type="range" id="priceRange" min="0" max="5000" value="5000" step="100"/>
+        </div>
+        <div class="filter-right">
+          <span id="productCountDisplay"></span>
+          <button class="view-btn active" id="gridViewBtn" title="Grid View"><i class="fas fa-th"></i></button>
+          <button class="view-btn" id="listViewBtn" title="List View"><i class="fas fa-list"></i></button>
+        </div>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+      <div class="no-results hidden" id="noResults">
+        <i class="fas fa-search"></i>
+        <h3>No products found</h3>
+        <p>Try adjusting your filters or search terms.</p>
+        <button class="btn-primary" onclick="resetFilters()">Reset Filters</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENDORS SECTION -->
+  <section class="section vendors-section" id="vendors">
+    <div class="container">
+      <div class="section-header">
+        <h2>Top Vendors</h2>
+        <p>Trusted sellers with verified quality and ratings</p>
+      </div>
+      <div class="vendors-grid" id="vendorsGrid"></div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section features-section">
+    <div class="container">
+      <div class="section-header"><h2>Why Choose MarketHub?</h2></div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feat-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Verified Vendors</h3>
+          <p>All sellers go through a strict verification process before listing on our platform.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon"><i class="fas fa-undo"></i></div>
+          <h3>Easy Returns</h3>
+          <p>30-day hassle-free return policy on all products across all vendors.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon"><i class="fas fa-lock"></i></div>
+          <h3>Secure Payments</h3>
+          <p>256-bit SSL encryption and multiple payment options including UPI &amp; EMI.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon"><i class="fas fa-headset"></i></div>
+          <h3>24/7 Support</h3>
+          <p>Our customer care team is always available to help with any issue.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-inner">
+        <div class="newsletter-text">
+          <h2>Stay in the Loop</h2>
+          <p>Get exclusive deals and new vendor alerts delivered to your inbox.</p>
+        </div>
+        <div class="newsletter-form">
+          <input type="email" id="newsletterEmail" placeholder="Enter your email address"/>
+          <button id="subscribeBtn" class="btn-primary">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="#" class="logo">Market<span>Hub</span></a>
+        <p>Your one-stop destination for shopping from thousands of verified vendors across India.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#vendors">Vendors</a></li>
+          <li><a href="#deals">Deals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Customer Service</h4>
+        <ul>
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Return Policy</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Become a Vendor</h4>
+        <ul>
+          <li><a href="#">Sell on MarketHub</a></li>
+          <li><a href="#">Vendor Dashboard</a></li>
+          <li><a href="#">Vendor Guidelines</a></li>
+          <li><a href="#">Commission Rates</a></li>
+        </ul>
+        <div class="payment-icons">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 MarketHub | Developed by <strong>Srikanth Koneti</strong> | Intern ID: CITS5145 | CodTech IT Solutions Pvt. Ltd.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART MODAL -->
+  <div class="modal-overlay" id="cartModal">
+    <div class="modal cart-modal">
+      <div class="modal-header">
+        <h3><i class="fas fa-shopping-cart"></i> Your Cart</h3>
+        <button class="close-btn" onclick="closeModal('cartModal')">&times;</button>
+      </div>
+      <div class="modal-body" id="cartItems"></div>
+      <div class="modal-footer" id="cartFooter"></div>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAIL MODAL -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal product-modal">
+      <button class="close-btn top-close" onclick="closeModal('productModal')">&times;</button>
+      <div id="productModalContent"></div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
